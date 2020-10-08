@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
+import { v4 as uuidv4 } from "uuid";
 import Glyph from "../glyph/glyph.component";
+import { fingerings } from "../../data";
 
 const NoteContainer = styled.div`
   display: flex;
@@ -9,20 +12,30 @@ const NoteContainer = styled.div`
   justify-content: space-around;
   width: 10px;
   height: 100px;
-  margin: 0 20px;
+  margin: 0 5px;
 `;
 
-const Note = (notes) => {
+const Note = ({ note }) => {
+  const setting = fingerings.D.find(
+    (fingering) => fingering.note === note.note
+  );
   return (
     <NoteContainer>
-      <Glyph filled />
-      <Glyph filled />
-      <Glyph filled />
-      <Glyph />
-      <Glyph />
-      <Glyph />
+      {setting.fingering.map((fingering) => {
+        return fingering === 1 ? (
+          <Glyph filled key={uuidv4()} />
+        ) : (
+          <Glyph key={uuidv4()} />
+        );
+      })}
     </NoteContainer>
   );
+};
+
+Note.propTypes = {
+  note: PropTypes.shape({
+    note: PropTypes.string,
+  }).isRequired,
 };
 
 export default Note;
