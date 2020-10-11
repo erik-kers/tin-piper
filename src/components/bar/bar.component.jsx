@@ -7,9 +7,10 @@ import Note from "../note/note.component";
 const BarContainer = styled.section`
   display: flex;
   align-items: center;
-  border-right: 1px solid grey;
+  justify-content: flex-start;
   flex-direction: row;
   height: 50px;
+  width: 90px;
   padding: 20px;
   margin-top: 50px;
 `;
@@ -17,9 +18,9 @@ const BarContainer = styled.section`
 const Bar = ({ notes }) => {
   return (
     <BarContainer>
-      {notes.map((note) => {
-        return <Note note={note} key={uuidv4()} />;
-      })}
+      {notes.map((note) => (
+        <Note note={note} key={uuidv4()} />
+      ))}
     </BarContainer>
   );
 };
