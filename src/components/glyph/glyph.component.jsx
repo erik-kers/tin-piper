@@ -8,6 +8,7 @@ const StyledGlyph = styled.div`
   width: 5px;
   height: 5px;
   border: 1px solid black;
+  margin-bottom: 5px;
 `;
 
 const Glyph = ({ filled }) => {
