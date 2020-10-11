@@ -6,8 +6,6 @@ import Bar from "../bar/bar.component";
 
 const SystemContainer = styled.section`
   display: flex;
-  width: auto;
-  flex-direction: row;
 `;
 
 const System = ({ bars }) => {
